@@ -1,0 +1,30 @@
+body{
+background-color: grey;
+}
+
+.App {
+  text-align: center;
+  
+}
+
+ul {
+  list-style-type: none;
+}
+
+ .active{
+  background-color: tomato;
+  
+}
+ .acknowledged{
+  background-color: teal;
+}
+
+ul{
+  padding: 0;
+}
+
+li{
+  margin: 5px;
+  padding: 5px;
+  border-style: dotted;
+}
