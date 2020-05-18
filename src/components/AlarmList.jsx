@@ -16,6 +16,7 @@ function AlarmList(props) {
               key={alarmName}
               active={active}
               removeAlarm={props.removeAlarm}
+              acknowledgeAlarm={props.acknowledgeAlarm}
             />
           )
         })}

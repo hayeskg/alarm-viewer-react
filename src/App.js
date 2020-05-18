@@ -23,7 +23,7 @@ class App extends React.Component {
     return (
       <div className="App" >
         <Header />
-        <AlarmList alarms={Object.entries(this.state.alarms)} removeAlarm={this.removeAlarm} />
+        <AlarmList alarms={Object.entries(this.state.alarms)} removeAlarm={this.removeAlarm} acknowledgeAlarm={this.acknowledgeAlarm} />
         <AlarmSim addNewAlarm={this.addNewAlarm} />
       </div>
     )
@@ -52,13 +52,20 @@ class App extends React.Component {
     })
   }
 
-  // acknowledgeAlarm = (alarmName) => {
-  //   this.setState((currentState) => {
-  //     return {
-  //       alarms.[alarmName].active = !currentState.alarms[alarmName].active;
-  //     };
-  //   })
-  // }
+  acknowledgeAlarm = (alarmName) => {
+    this.setState((currentState) => {
+      console.dir(currentState.alarms[alarmName].active);
+      return {
+        alarms: {
+          ...currentState.alarms,
+          [alarmName]: {
+            ...currentState.alarms[alarmName], active: !currentState.alarms[alarmName].active
+          }
+        }
+      }
+    }
+    )
+  }
 
   //active 
 
