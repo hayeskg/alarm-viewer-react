@@ -28,12 +28,6 @@ class AlarmSim extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { alarmInput } = this.state;
-    // const newAlarm = {
-    //   [alarmInput]: {
-    //     alarmDate: Date.now(),
-    //     active: true,
-    //   }
-    //}
     this.props.addNewAlarm(alarmInput);
     this.setState({ alarmInput: '' });
   };

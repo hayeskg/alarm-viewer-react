@@ -1,16 +1,22 @@
 import React from 'react';
 import AlarmItem from './AlarmItem'
 
-function AlarmList({ alarms }) {
+function AlarmList(props) {
   return (
     <div>
       <h2>
         Alarm List:
     </h2>
       <ul>
-        {alarms.map(([alarmName, { alarmDate, active }]) => {
+        {props.alarms.map(([alarmName, { alarmDate, active }]) => {
           return (
-            <AlarmItem alarmName={alarmName} alarmDate={alarmDate} key={alarmName} active={active} />
+            <AlarmItem
+              alarmName={alarmName}
+              alarmDate={alarmDate}
+              key={alarmName}
+              active={active}
+              removeAlarm={props.removeAlarm}
+            />
           )
         })}
       </ul >
