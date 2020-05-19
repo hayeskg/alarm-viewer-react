@@ -25,7 +25,8 @@ class App extends React.Component {
         <Header />
         <AlarmList alarms={Object.entries(this.state.alarms)} removeAlarm={this.removeAlarm} acknowledgeAlarm={this.acknowledgeAlarm} />
         <AlarmSim addNewAlarm={this.addNewAlarm} />
-      </div>
+        <button onClick={this.handleAlarmSave}>SAVE ALARMS</button>
+      </div >
     )
   }
 
@@ -54,7 +55,6 @@ class App extends React.Component {
 
   acknowledgeAlarm = (alarmName) => {
     this.setState((currentState) => {
-      console.dir(currentState.alarms[alarmName].active);
       return {
         alarms: {
           ...currentState.alarms,
@@ -67,10 +67,21 @@ class App extends React.Component {
     )
   }
 
-  //active 
+  handleAlarmSave = (event) => {
+    localStorage.setItem('data', JSON.stringify(this.state.alarms));
+    console.log('data saved');
+  };
 
-  //remoteDidMount
+  loadAlarmData = () => {
+    const data = localStorage.getItem('data');
+    if (data) this.setState({ alarms: JSON.parse(data) });
+  }
 
+  componentDidMount = () => {
+    console.log('mounted')
+    this.loadAlarmData();
+
+  };
 
 };
 
